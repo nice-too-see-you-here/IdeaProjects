@@ -1,5 +1,9 @@
+//Импортируем библиотеки
 import java.util.Scanner;
+
+
 public class Main {
+    //Инициализируем
     static int number;
     static int a;
     static int b;
@@ -8,28 +12,18 @@ public class Main {
     static int[] matrix1 = new int[number];
     static int[][] matrix2;
 
+    //Метод - выводим в консоль
     public static void Echo(){
         System.out.println(result + "");
     }
-
+    //Метод - считываем данные
     public static void Input() {
         Scanner input = new Scanner(System.in);
         result = "Введите число: ";
         Echo();
         number = input.nextInt();
     }
-
-    public static void main(String[] args) {
-        Matrix();
-        result ="Сумма элеметнов одномерного массива = " + Sum(matrix1);
-        Echo();
-        result ="Рандомный двумерный массив: ";
-        Echo();
-        Matrix2();
-        result = "Проверяем массив - элемент второй строки второго столбца равен:" + matrix2[1][1];
-        Echo();
-        Div();
-    }
+    //Метод - создаем массив по параметрам пользователя
     public static void  Matrix() {
         result = "Сколько элементов хотите в одномерном массиве?";
         Echo();
@@ -43,6 +37,8 @@ public class Main {
             matrix1[i] = number;
         }
     }
+
+    //Метод - складываем все элменты массива
     public static int Sum(int[] matrix1) {
         int sum = 0;
         for (int i = 0; i < matrix1.length; i++) {
@@ -50,10 +46,11 @@ public class Main {
         }
         return sum;
     }
+    //Метод - генерим рандомную двумерную матрицу
     public static void Matrix2() {
-         int a = (int) ((Math.random() * 9)+2);
-         int b = (int) ((Math.random() * 9)+2);
-         matrix2 = new int[a][b];
+        int a = (int) ((Math.random() * 9)+2);
+        int b = (int) ((Math.random() * 9)+2);
+        matrix2 = new int[a][b];
         for (int i = 0; i < a; i++) {
             for (int c = 0; c < b; c++) {
                 matrix2[i][c] = (int) ((Math.random() * 9)+1);
@@ -64,7 +61,7 @@ public class Main {
             dispmatr = "";
         }
     }
-
+    //Метод - Делим два числа с проверкой деления на 0
     public static void Div() {
         result = "ЧТО будем делить?";
         Echo();
@@ -74,14 +71,26 @@ public class Main {
         Input();
         int d2 = number;
         try {
-          int div =  d1 / d2;
-          result = div + "";
+            int div =  d1 / d2;
+            result = div + "";
         } catch (ArithmeticException e) {
             result = "Ошибка! Делим на ноль?";
         } finally {
             Echo();
         }
 
+    }
+    //Собираем методы
+    public static void main(String[] args) {
+        Matrix();
+        result ="Сумма элеметнов одномерного массива = " + Sum(matrix1);
+        Echo();
+        result ="Рандомный двумерный массив: ";
+        Echo();
+        Matrix2();
+        result = "Проверяем массив - элемент второй строки второго столбца равен:" + matrix2[1][1];
+        Echo();
+        Div();
     }
 
 
